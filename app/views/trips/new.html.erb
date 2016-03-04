@@ -1,0 +1,26 @@
+<h1>New Trip</h1>
+<hr />
+<% if @trip.errors.any? %>
+  <h3><%= pluralize(@person.errors.count, 'Error', 'Errors') %></h3>
+  <ul>
+    <% @person.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <br />
+      <% end %>
+  </ul>
+  <hr />
+<% end %>
+<%= render(partial: 'form') %>
+<%= form_for @trip do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, placeholder: 'Name', required: true  %>
+  <br />
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date, required: true %>
+  <br />
+  <%= f.label :end_date %>
+  <%= f.date_field :end_date, required: true %>
+  <br />
+  <%= f.submit %>
+
+<% end %>

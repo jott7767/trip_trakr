@@ -1,0 +1,21 @@
+<h1>Trips</h1>
+<hr />
+<%if @trips.any? %>
+    <% @trips.each do |trip| %>
+      <div class='trip'>
+        <h3>
+          <%= link_to trip.name, trip_path(trip) %>
+        </h3>
+        <h5>
+          <%= trip.start_date %> - <%= trip.end_date %>
+        </h5>
+      </div>
+    <%end%>
+<% else %>
+  <h2>You should plan some more trips</h2>
+<% end %>
+<hr />
+
+<button type = 'button' class = 'button'>
+  <%= link_to 'Add trip', new_trip_path %>
+</button>
